@@ -10305,7 +10305,7 @@
               );
             });
         } else if ("Toolbox" === t) {
-          if (!(await An("divmagic-logged-in"))) return;
+          // if (!(await An("divmagic-logged-in"))) return;
           Hn("cmt", { d: "chrome" }),
             Pn.tabs.query({ active: !0, currentWindow: !0 }, async (e) => {
               Pn.scripting.executeScript(

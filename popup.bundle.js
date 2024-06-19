@@ -9588,100 +9588,100 @@
       }
       P = chrome;
       const M = function () {
-          const [t, n] = e.useState("D"),
+          const [t, n] = e.useState("D"), // error state
             [r, a] = e.useState(!1),
-            [l, o] = e.useState(!1),
-            [i, u] = e.useState(""),
+            [l, o] = e.useState(!1), // verification code state
+            [i, u] = e.useState(""), // otp input state
             [s, c] = e.useState(!1),
-            [d, f] = e.useState(!1),
-            [p, m] = e.useState(!1),
+            [d, f] = e.useState(!1), // login btn loading state
+            [p, m] = e.useState(!1), // show error for login
             [g, h] = e.useState(!0),
-            [v, b] = e.useState(!1),
-            [y, w] = e.useState(""),
+            [v, b] = e.useState(1), // showing menu
+            [y, w] = e.useState(""), // email input state
             [k, x] = e.useState(!1),
             [S, M] = e.useState(!1),
             [D, F] = e.useState(!1);
           return (
-            e.useEffect(() => {
-              !(async function () {
-                if (!(await N("divmagic-logged-in"))) {
-                  a(!0), h(!1), z("ls", { id: "anonymous", d: L });
-                  const e = await N("divmagic-otp-continue");
-                  return void (e && (w(e.email), o(!0)));
-                }
-                const e = await E("divmagic-user-v2"),
-                  t = await E("divmagic-user-settings-v2");
-                if (e && e.id && e.status) {
-                  a(!1),
-                    h(!0),
-                    x(t.showDevToolsPanel || !1),
-                    M(t.autoHidePopup || !1),
-                    n("D"),
-                    T(),
-                    z("ep", { id: e.id, d: L });
-                  const r = Date.now();
-                  if (r - (e.lastChecked || 0) > 216e5) {
-                    const t = await ((e) =>
-                      new Promise((t, n) => {
-                        const r = (a = 0) => {
-                          const l = `https://9xunk3m414.execute-api.us-east-1.amazonaws.com/prod/${atob(
-                              "c3Vic2NyaXB0aW9u"
-                            )}`,
-                            o = {
-                              event: atob("dmVyaWZ5"),
-                              value: { email: e },
-                            },
-                            i = {
-                              method: "POST",
-                              headers: { "Content-Type": "application/json" },
-                              body: JSON.stringify(o),
-                            };
-                          fetch(l, i)
-                            .then((e) => {
-                              200 === e.status
-                                ? t(!0)
-                                : 500 === e.status && a < 2
-                                ? setTimeout(() => r(a + 1), 1e3)
-                                : t(!1);
-                            })
-                            .catch((e) => {
-                              ("AbortError" === e.name ||
-                                "TypeError" === e.name) &&
-                              a < 2
-                                ? setTimeout(() => r(a + 1), 1e3)
-                                : n(e);
-                            });
-                        };
-                        try {
-                          r();
-                        } catch (e) {
-                          n(e);
-                        }
-                      }))(e.email);
-                    if (!t)
-                      return (
-                        P.storage.local.remove("divmagic-user-v2"),
-                        P.storage.local.remove("divmagic-user-settings-v2"),
-                        P.storage.local.remove("divmagic-logged-in"),
-                        P.storage.local.remove("divmagic-otp-continue"),
-                        a(!0),
-                        void h(!1)
-                      );
-                    (e.lastChecked = r),
-                      await C("divmagic-user-v2", e),
-                      _("dui", e.id);
-                  }
-                  t.autoHidePopup &&
-                    document.addEventListener("mouseout", (e) => {
-                      e.relatedTarget ||
-                        e.toElement ||
-                        e.target instanceof HTMLSelectElement ||
-                        e.target instanceof HTMLOptionElement ||
-                        window.close();
-                    });
-                } else a(!0), h(!1), z("ls", { id: "anonymous", d: L });
-              })();
-            }, []),
+            // e.useEffect(() => {
+            //   !(async function () {
+            //     if (!(await N("divmagic-logged-in"))) {
+            //       a(!0), h(!1), z("ls", { id: "anonymous", d: L });
+            //       const e = await N("divmagic-otp-continue");
+            //       return void (e && (w(e.email), o(!0)));
+            //     }
+            //     const e = await E("divmagic-user-v2"),
+            //       t = await E("divmagic-user-settings-v2");
+            //     if (e && e.id && e.status) {
+            //       a(!1),
+            //         h(!0),
+            //         x(t.showDevToolsPanel || !1),
+            //         M(t.autoHidePopup || !1),
+            //         n("D"),
+            //         T(),
+            //         z("ep", { id: e.id, d: L });
+            //       const r = Date.now();
+            //       if (r - (e.lastChecked || 0) > 216e5) {
+            //         const t = await ((e) =>
+            //           new Promise((t, n) => {
+            //             const r = (a = 0) => {
+            //               const l = `https://9xunk3m414.execute-api.us-east-1.amazonaws.com/prod/${atob(
+            //                   "c3Vic2NyaXB0aW9u"
+            //                 )}`,
+            //                 o = {
+            //                   event: atob("dmVyaWZ5"),
+            //                   value: { email: e },
+            //                 },
+            //                 i = {
+            //                   method: "POST",
+            //                   headers: { "Content-Type": "application/json" },
+            //                   body: JSON.stringify(o),
+            //                 };
+            //               fetch(l, i)
+            //                 .then((e) => {
+            //                   200 === e.status
+            //                     ? t(!0)
+            //                     : 500 === e.status && a < 2
+            //                     ? setTimeout(() => r(a + 1), 1e3)
+            //                     : t(!1);
+            //                 })
+            //                 .catch((e) => {
+            //                   ("AbortError" === e.name ||
+            //                     "TypeError" === e.name) &&
+            //                   a < 2
+            //                     ? setTimeout(() => r(a + 1), 1e3)
+            //                     : n(e);
+            //                 });
+            //             };
+            //             try {
+            //               r();
+            //             } catch (e) {
+            //               n(e);
+            //             }
+            //           }))(e.email);
+            //         if (!t)
+            //           return (
+            //             P.storage.local.remove("divmagic-user-v2"),
+            //             P.storage.local.remove("divmagic-user-settings-v2"),
+            //             P.storage.local.remove("divmagic-logged-in"),
+            //             P.storage.local.remove("divmagic-otp-continue"),
+            //             a(!0),
+            //             void h(!1)
+            //           );
+            //         (e.lastChecked = r),
+            //           await C("divmagic-user-v2", e),
+            //           _("dui", e.id);
+            //       }
+            //       t.autoHidePopup &&
+            //         document.addEventListener("mouseout", (e) => {
+            //           e.relatedTarget ||
+            //             e.toElement ||
+            //             e.target instanceof HTMLSelectElement ||
+            //             e.target instanceof HTMLOptionElement ||
+            //             window.close();
+            //         });
+            //     } else a(!0), h(!1), z("ls", { id: "anonymous", d: L });
+            //   })();
+            // }, []),
             e.createElement(
               "div",
               {
